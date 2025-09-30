@@ -1,9 +1,0 @@
-version: '3.8'
-services:
-  profile-frontend:
-    build: .
-    image: ${DOCKER_USERNAME}/profile-frontend:latest
-    container_name: profile-frontend
-    ports:
-      - "3000:80"
-    restart: always
