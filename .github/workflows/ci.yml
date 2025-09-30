@@ -1,3 +1,4 @@
+
 name: React CI with Docker
 
 on:
@@ -9,6 +10,7 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # tránh bị treo quá lâu
 
     steps:
       - name: Checkout code
@@ -24,4 +26,5 @@ jobs:
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/react-app:ci .
 
       - name: Run tests inside container
-        run: docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/react-app:ci
+        run: docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/react-app:ci npm test -- --watchAll=false
+
